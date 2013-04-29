@@ -1,0 +1,52 @@
+<ul id='breeds'>
+	<li><a href="#boxer">Boxer</a></li>
+	<li><a href="#beagles">Beagles</a></li>
+	<li><a href="#doberman">Doberman</a></li>
+</ul>
+<div id='boxer'>
+	Boxer stuff
+</div>
+<div id='beagles'>
+	Beagles stuff
+</div>
+<div id='doberman'>
+	Doberman stuff
+</div>
+
+<script src='../../steal/steal.js'></script>
+<script>
+	steal('ui/tabs',function(Tabs){
+
+		var visibleTab = can.compute("beagles")
+		// visibleTab() --> "beagles"
+		// visibleTab("boxer")
+		// visibleTab() --> boxer
+		// visibleTab.bind("change",function(ev, newVal, oldVal){})
+
+		var tabs = new Tabs("#breeds",{
+			activeTab: visibleTab
+		});
+
+		var ids = ["boxer","beagles","doberman"],
+			timer;
+
+		var updateAndMove = function(){
+			var index = ids.indexOf(visibleTab())
+			index++;
+			if(index != ids.length){
+				visibleTab( ids[index])
+			} else{
+				visibleTab(ids[0])
+			}
+			
+		}
+
+		timer = setTimeout(updateAndMove,3000)
+		
+		visibleTab.bind("change",function(){
+			clearTimeout(timer);
+			timer = setTimeout(updateAndMove,3000)
+		})
+
+	})
+</script>

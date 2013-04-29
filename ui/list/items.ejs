@@ -1,0 +1,5 @@
+<% items.each(function(item){ %>
+	<li <%= (el) -> el.data('item', item) %> >
+		<%== template.render( item ) %>
+	</li>
+<% }) %>

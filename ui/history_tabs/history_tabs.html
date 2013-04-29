@@ -1,0 +1,23 @@
+<ul id='breeds'>
+	<li><a href="#boxer">Boxer</a></li>
+	<li><a href="#beagles">Beagles</a></li>
+	<li><a href="#doberman">Doberman</a></li>
+</ul>
+<div id='boxer'>
+	Boxer stuff
+</div>
+<div id='beagles'>
+	Beagles stuff
+</div>
+<div id='doberman'>
+	Doberman stuff
+</div>
+
+
+<script src='../../steal/steal.js'></script>
+<script>
+	steal('ui/history_tabs',function(Tabs){
+		new Tabs("#breeds");
+		//new Tabs("#events");
+	})
+</script>

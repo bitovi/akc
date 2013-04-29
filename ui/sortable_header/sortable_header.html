@@ -1,0 +1,43 @@
+<html>
+<head>
+	<style>
+		.asc {
+			background-color: green;
+		}
+		.desc {
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<table>
+<thead id='sortable'>
+	<tr>
+		<th></th>
+		<th data-sortby="name">Event Name</th>
+		<th data-sortby="eventId">Event Number</th>
+		<th data-sortby="competition.name">Competition(s)</th>
+		<th data-sortby="startDate">Start Date</th>
+		<th data-sortby="eventStatusId">Event Status</th>
+		<th data-sortby="eventPanelStatusId">Panel Status</th>
+		<th data-sortby="stateId">State</th>
+	</tr>
+</thead>
+</table>
+<script src='../../steal/steal.js'></script>
+
+
+<script>
+
+	steal('ui/sortable_header',function(SortableHeader){
+
+		var sortBy = can.compute("startDate asc")
+
+		new SortableHeader("#sortable",{
+			sortby: sortBy
+		})
+	})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<html>
+	<body>
+		<style>
+			#slider {
+				border: solid 1px blue;
+				background-color: red;
+				height: 30px;
+				width: 30px;
+			}
+			#container {
+				border: solid 1px black;
+			}
+		</style>
+		<video width=425 height=240 id="trailer" preload autoplay>
+			<source src=trailer.mp4 type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+			<source src=trailer.webm type='video/webm; codecs="vp8, vorbis"' />
+			<source src=trailer.ogv type='video/ogg; codecs="theora, vorbis"' />
+		</video>
+		<div id='container'>
+			<div id='slider'></div>
+		</div>
+		<input id='age'/>
+
+		<script src='../../steal/steal.js'></script>
+
+		<script>
+			steal('ui/slider',function(Slider){
+
+				var video = $("#trailer")[0];
+
+				var time = can.compute(video,"currentTime","timeupdate")
+				var duration = can.compute(video,"duration","durationchange")
+
+				console.log(video.duration)
+				var min = can.compute(0)
+
+
+				new Slider("#slider",{
+					min: min,
+					max: duration,
+					value: time
+				});
+
+				duration.bind("change",function(ev, newVal, oldVal){
+					console.log("changing duration",newVal)
+				})
+				time.bind("change",function(ev, newVal, oldVal){
+					//console.log("changing time", newVal)
+				})
+			})
+
+
+
+		</script>
+	</body>
+</html>

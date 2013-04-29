@@ -1,0 +1,65 @@
+<html>
+
+	<body>
+		<ul id='people'>
+		</ul>
+		<script src='../../steal/steal.js'></script>
+		<script>
+
+
+steal('ui/list','can','can/util/fixture',
+	'can/view/mustache',
+	function(List, can, fixture){
+
+
+	window.prefix = can.compute("Mrs.");
+
+	var getPrefix = function(){
+		return prefix()
+	}
+
+	window.Person = can.Model.extend({
+		findAll: "GET /services/people",
+		destroy: "DELETE /services/people/{id}"
+	},{
+		fullName: function(){
+			return this.attr('first') +" "+ this.attr('last')
+		}
+	})
+
+	Person.List = can.Model.List.extend({
+		numberOfNamesWithE: function(){
+			var count = 1;
+			this.each(function(person){
+				if( (person.attr('first')+person.attr('last')).indexOf("e") ){
+					count++;
+				}
+			})
+			return count;
+		}
+	})
+
+	fixture("GET /services/people",function(){
+		return [
+			{first: "Justin",last: "Meyer", id: 1},
+			{first: "Mickey", last: "Mouse", id: 2},
+			{first: "Leia", last: "Organa", id: 3}
+		]
+	})
+	fixture("DELETE /services/people/{id}",function(){
+		return true
+	})
+
+	window.template = can.view.ejs("<h3>Your name is <%=this.fullName()%></h3>")
+
+	can.view.mustache("person","<h3>Your name is {{fullName}}</h3>")
+
+	var def = Person.findAll({dogLovers: true}, function(people){
+		console.log(people.numberOfNamesWithE())
+	})
+
+})
+
+		</script>
+	</body>
+</html>

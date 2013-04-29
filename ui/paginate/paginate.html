@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Paginate</title>
+		<style>
+
+			a.active {
+
+			}
+		</style>
+	</head>
+	<body>
+    	<h1>Paginate Demo</h1>
+		<div id='paginate1'></div>
+		<div id='paginate2'></div>
+		<script src='../../steal/steal.js'></script>
+		<script>
+		steal('ui/paginate',function(Paginate){
+
+			var pageCount = can.compute(),
+				pageNumber = can.compute(0)
+
+			new Paginate('#paginate1',{
+				pageCount: pageCount,
+				pageNumber: pageNumber
+			});
+
+			setTimeout(function(){
+				pageCount(5)
+				pageCount2(10)
+			},2000)
+
+			pageNumber.bind("change",function(ev, newVal){
+				console.log("moving first to ", newVal)
+			})
+
+			can.route("",{
+				offset: "0"
+			})
+
+			var pageCount2 = can.compute(),
+				limit = 100,
+				pageNumber2 = can.compute(function(){
+					return Math.floor( 
+						+can.route.attr('offset') / limit)
+				})
+		
+			new Paginate('#paginate2',{
+				pageCount: pageCount2,
+				pageNumber: pageNumber2,
+				nextURL : function(){
+					return can.route.url({
+						offset: +can.route.attr('offset')
+							+ 100
+					})
+				},
+				prevURL : function(){
+					return can.route.url({
+						offset: +can.route.attr('offset') - 100
+					})
+				}
+			});
+
+		});
+		</script>
+	</body>
+</html>

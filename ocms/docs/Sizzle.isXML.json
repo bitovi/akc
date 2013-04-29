@@ -1,0 +1,1 @@
+c({"name": "Sizzle.isXML", "params": {"elem": {"description": "<p>An element or a document</p>", "type": "Element|Object", "optional": false, "order": 0, "name": "elem"}}, "ret": {"type": "undefined", "description": ""}, "type": "function", "comment": "<p>Detect xml</p>", "src": "can/lib/jquery.1.9.1.js", "line": 4000, "children": []})

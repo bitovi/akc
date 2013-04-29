@@ -1,0 +1,7 @@
+<a href="<%== this.prevURL ? this.prevURL() : 'javascript://'%>"
+	class="prev <%= this.canPrev() ? 'active' : '' %>">&lt;</a>
+
+	<span><%= this.pageNumber() +1 %></span>
+
+<a href="<%== this.nextURL ? this.nextURL() : 'javascript://'%>"
+	class="next <%= this.canNext() ? 'active' : '' %>">&gt;</a>
