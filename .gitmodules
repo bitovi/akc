@@ -1,9 +1,9 @@
 [submodule "can"]
 	path = can
-	url = https://github.com/bitovi/canjs
+	url = https://github.com/bitovi/canjs.git
 [submodule "steal"]
 	path = steal
-	url = https://github.com/bitovi/steal
-[submodule "funcunit"]
-	path = funcunit
-	url = https://github.com/bitovi/funcunit
+	url = https://github.com/bitovi/steal.git
+[submodule "jquerypp"]
+	path = jquerypp
+	url = https://github.com/bitovi/jquerypp.git
