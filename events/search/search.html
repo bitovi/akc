@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html lang="en">
+	<head>
+		<title>Search</title>
+	</head>
+	<body>
+    		<h1>Search Demo</h1>
+		<div id='search'></div>
+		<script src='../../steal/steal.js'></script>
+		<script>
+		steal('events/search',function(Search){
+			new Search('#search',{
+				clientState: can.route.data
+			});
+		});
+		</script>
+	</body>
+</html>

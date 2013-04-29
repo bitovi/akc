@@ -1,0 +1,12 @@
+<form>
+	<label>Club Name</label>
+	<input name='club_name' value="{{clientState.club_name}}"/>
+	<label>Club Id</label>
+	<input name='clubId' value="{{clientState.clubId}}"/>
+	
+
+	<label>Date Range</label>
+	<input name='startDate:gt' value="{{prettyDate clientState.startDate:gt}}"/>
+	<input name='startDate:lt' value="{{prettyDate clientState.startDate:lt}}"/>
+	<input type="submit" value="Search"/>
+</form>
